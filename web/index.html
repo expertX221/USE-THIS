@@ -4,7 +4,13 @@
 <body><main><header><span>THE CONSORTIUM / wHACKiest 2026</span><span class="pill">LOCAL PROCESSING</span></header>
 <section class="hero"><small>KNOW THYSELF TRACK</small><h1>VOLTCTRL</h1><p>See how last night’s sleep relates to how you feel today.</p></section>
 <div class="grid"><section class="panel"><h2>Signal monitor</h2><p id="status" role="status">Choose a data source.</p>
-<div class="actions"><button id="demo">Run simulated demo</button><button id="ble">Connect BLE heart rate</button><label><input id="check-watch" type="checkbox"> Show nearby Bluetooth devices</label><button id="stop">Disconnect</button></div>
+<div class="actions"><button id="demo">Run simulated demo</button><button id="stop">Disconnect</button></div>
+<form id="ble-connect" class="ble-connect">
+  <label for="ble-name">Bluetooth device name<input id="ble-name" type="search" placeholder="e.g. Fastrack" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" aria-describedby="ble-help"></label>
+  <button type="submit" id="ble">Connect BLE heart rate</button>
+</form>
+<p id="ble-help">Enter the start of the advertised name, matching capitalization, or leave it blank.</p>
+<label><input id="check-watch" type="checkbox"> Show nearby Bluetooth devices when the search is blank</label>
 <div class="actions"><input id="token" type="password" placeholder="Local session token" aria-label="Local session token"><button id="wifi">Connect ESP32 Wi-Fi</button></div>
 <details><summary>Fastrack Volt S1 on Android</summary>
 <p>Pair in Fastrack Smart World first. To bring in recorded readings, choose a local CSV with <code>timestamp,bpm</code> columns. Use ISO 8601 timestamps with time zones. This import stays in the current browser session.</p>

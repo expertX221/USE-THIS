@@ -68,15 +68,20 @@ $('demo').onclick = () => {
   show();
   timer = setInterval(show, 700);
 };
-$('ble').onclick = async () => {
+$('ble-connect').onsubmit = async event => {
+  event.preventDefault();
   disconnect();
   const attempt = generation;
   if (!navigator.bluetooth) return status('Bluetooth needs a supported Chrome browser and HTTPS or localhost.');
+  const namePrefix = $('ble-name').value.trim();
+  const options = namePrefix
+    ? {filters:[{namePrefix}], optionalServices:['heart_rate']}
+    : $('check-watch').checked
+      ? {acceptAllDevices:true, optionalServices:['heart_rate']}
+      : {filters:[{services:['heart_rate']}]};
   let selected;
   try {
-    selected = await navigator.bluetooth.requestDevice($('check-watch').checked
-      ? {acceptAllDevices:true, optionalServices:['heart_rate']}
-      : {filters:[{services:['heart_rate']}]});
+    selected = await navigator.bluetooth.requestDevice(options);
     if (attempt !== generation) return;
     device = selected;
     const gatt = await selected.gatt.connect();
@@ -101,7 +106,9 @@ $('ble').onclick = async () => {
   } catch (error) {
     if (selected?.gatt.connected) selected.gatt.disconnect();
     if (attempt === generation) status(error.name === 'NotFoundError'
-      ? 'No device or heart-rate service found. If your watch appeared but could not stream, check for a broadcast mode.'
+      ? (selected
+          ? 'Device found, but it did not expose the heart-rate service.'
+          : 'No device selected. Check the name and capitalization, or clear the search and show nearby devices.')
       : 'Bluetooth: ' + error.message);
   }
 };
