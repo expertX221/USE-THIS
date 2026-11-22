@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 620" role="img" aria-labelledby="title description">
+<title id="title">VOLTCTRL ESP32 and MAX30102 wiring</title>
+<desc id="description">ESP32 GPIO21 to SDA, GPIO22 to SCL, GND to GND and 3V3 to VIN on a compatible breakout.</desc>
+<rect width="1120" height="620" rx="25" fill="#0b1424"/>
+<g font-family="system-ui,sans-serif" fill="#edf4ff">
+<text x="65" y="65" font-size="19" fill="#78ecd0" letter-spacing="3">THE CONSORTIUM / SENSOR NODE</text>
+<text x="65" y="130" font-size="48" font-weight="700">ESP32 + MAX30102</text>
+<rect x="65" y="195" width="303" height="315" rx="23" fill="#15243a" stroke="#304c68"/>
+<rect x="751" y="195" width="303" height="315" rx="23" fill="#15243a" stroke="#304c68"/>
+<text x="91" y="245" font-size="26" font-weight="700">ESP32 DevKit</text><text x="777" y="245" font-size="26" font-weight="700">MAX30102 breakout</text>
+<g font-size="22"><text x="91" y="304">3V3</text><text x="91" y="356">GND</text><text x="91" y="408">GPIO21</text><text x="91" y="460">GPIO22</text>
+<text x="777" y="304">VIN*</text><text x="777" y="356">GND</text><text x="777" y="408">SDA</text><text x="777" y="460">SCL</text></g>
+<g stroke-width="4"><path d="M367 297H751" stroke="#ff8787"/><path d="M367 349H751" stroke="#a3b1c8"/><path d="M367 401H751" stroke="#78ecd0"/><path d="M367 453H751" stroke="#f6d879"/></g>
+<text x="65" y="563" font-size="19" fill="#b5c7dc">* Use a breakout explicitly rated for 3.3 V input and 3.3 V I²C.</text>
+</g></svg>
