@@ -74,7 +74,9 @@ $('ble').onclick = async () => {
   if (!navigator.bluetooth) return status('Bluetooth needs a supported Chrome browser and HTTPS or localhost.');
   let selected;
   try {
-    selected = await navigator.bluetooth.requestDevice({filters:[{services:['heart_rate']}]});
+    selected = await navigator.bluetooth.requestDevice($('check-watch').checked
+      ? {acceptAllDevices:true, optionalServices:['heart_rate']}
+      : {filters:[{services:['heart_rate']}]});
     if (attempt !== generation) return;
     device = selected;
     const gatt = await selected.gatt.connect();
@@ -98,7 +100,9 @@ $('ble').onclick = async () => {
     mode = 'ble'; status('BLUETOOTH · ' + (selected.name || 'heart-rate broadcaster'));
   } catch (error) {
     if (selected?.gatt.connected) selected.gatt.disconnect();
-    if (attempt === generation) status('Bluetooth: ' + error.message);
+    if (attempt === generation) status(error.name === 'NotFoundError'
+      ? 'No device or heart-rate service found. If your watch appeared but could not stream, check for a broadcast mode.'
+      : 'Bluetooth: ' + error.message);
   }
 };
 function parseWatchCsv(raw) {

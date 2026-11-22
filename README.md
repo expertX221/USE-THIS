@@ -2,6 +2,8 @@
 
 wHACKiest 2026 · Know Thyself track. Bring together daily check-ins and a live heart-rate stream in a private dashboard. The rule-based insight agent compares next-day energy across two sleep-duration groups and shows the number of matched nights before offering an opt-in nudge.
 
+[Open the hosted dashboard](https://voltctrl.vercel.app/). On Android Chrome, use **Connect BLE heart rate**. If the filtered chooser cannot find the watch, enable **Show nearby Bluetooth devices** and retry. A device in the chooser must still expose the Heart Rate Service to stream. The hosted app supports Bluetooth, CSV and simulation. ESP32 Wi-Fi uses the local dashboard.
+
 ## Run the demo
 
 ```sh
